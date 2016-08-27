@@ -1,0 +1,38 @@
+/* Device Tree Overlay for enabling the pins used to sample ADCs using PRU-ICSS. */
+
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "ti, beaglebone", "ti,beaglebone-black";
+
+	part-number = "ARVP-PRU-ADC";
+	version = "00A0";
+
+	exclusive-use = "P9.31", "P8.27", "P8.28", "P8.29", "P8.39", "P8.40", "pru0", "pru1";
+
+	fragment@0 {
+		target = <&am33xx_pinmux>;
+		__overlay__ {
+			pru_pru_pins: pinmux_pru_pru_pins { // The PRU pin modes
+				pinctrl-single,pins = <
+					0x190	0x0d	// SAMP_CLK	P9_31	pru0_pru_r30_0, MODE5 (OUTPUT)
+					0x0e0	0x0d	// CS		P8_27	pru1_pru_r30_8, MODE5 (OUTPUT)
+					0x0e8	0x0d	// CLK		P8_28	pru1_pru_r30_10, MODE5 (OUTPUT)
+					0x0e4	0x0d	// CONVST	P8_29	pru1_pru_r30_9, MODE5 (OUTPUT)
+					0x0b8	0x2e	// SER1A	P8_39	pru1_pru_r31_6, MODE6 (INPUT)
+					0x0bc	0x2e	// SER1B	P8_40	pru1_pru_r31_7, MODE6 (INPUT)
+				>;
+			};
+		};
+	};
+
+	fragment@1 { // Enable the PRUSS
+		target = <&pruss>;
+		__overlay__ {
+			status = "okay";
+			pinctrl-names = "default";
+			pinctrl-0 = <&pru_pru_pins>;
+		};
+	};
+};
