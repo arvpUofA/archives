@@ -1,0 +1,10 @@
+# Define the goal
+string color  # Specify which buoy color
+int8 start_heading
+---
+# Define the result
+bool buoy_touch
+string color
+---
+# Define a feedback message
+float32 distance_away

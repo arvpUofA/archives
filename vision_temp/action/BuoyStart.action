@@ -1,0 +1,10 @@
+# Define the goal
+string color
+string last  
+---
+# Define the result
+string color
+---
+# Define a feedback message
+int8 number
+

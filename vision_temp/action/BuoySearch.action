@@ -1,0 +1,13 @@
+# Define the goal
+float32 heading  
+---
+# Define the result
+string left
+string right
+string middle
+---
+# Define a feedback message
+int8 number
+int8 red
+int8 green
+int8 yellow
