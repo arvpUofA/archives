@@ -1,0 +1,9 @@
+<launch>
+	<node
+		pkg="diagnostics"
+		type="diagnosticsRunner.py"
+		name="diagnostics"
+		output="screen"
+		respawn="true">
+	</node>
+</launch>
