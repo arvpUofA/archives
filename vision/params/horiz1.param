@@ -1,0 +1,4 @@
+BuoyHoughCircles:
+  #roi: {topLeft: {x: 170, y: 110}, bottomRight: {x: 480, y: 315}}
+  GaussianBlur: {blur: 5}
+  HoughCircles: {circ_thresh: 17, edge: 180, min_dist: 30}
